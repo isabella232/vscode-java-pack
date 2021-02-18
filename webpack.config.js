@@ -14,6 +14,7 @@ module.exports = function (env, argv) {
       'getting-started': './src/getting-started/assets/index.ts',
       'ext-guide': './src/ext-guide/assets/index.ts',
       welcome: './src/welcome/assets/index.ts',
+      'formatter-settings': './src/formatter-settings/assets/index.ts'
     },
     module: {
       rules: [{
@@ -42,7 +43,14 @@ module.exports = function (env, argv) {
         options: {
           esModule: false
         }
-      }]
+      }, {
+        test: /\.(css)$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }]
+        }]
     },
     output: {
       filename: 'assets/[name]/index.js',
@@ -81,9 +89,15 @@ module.exports = function (env, argv) {
         inlineSource: '.(js|css)$',
         chunks: ['welcome']
       }),
+      new HtmlWebpackPlugin({
+        filename: path.resolve(__dirname, 'out/assets/formatter-settings/index.html'),
+        template: 'src/formatter-settings/assets/index.html',
+        inlineSource: '.(js|css)$',
+        chunks: ['formatter-settings']
+      }),
       new HtmlWebpackInlineSourcePlugin(),
     ],
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     resolve: {
       extensions: ['.js', '.ts', '.tsx']
     }
