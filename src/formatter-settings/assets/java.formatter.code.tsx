@@ -3,7 +3,7 @@ import "bootstrap/js/src/tab";
 import * as React from "react";
 import "../../assets/vscode.scss";
 import { formatCode } from "./vscode.api";
-import { CodeHighlight } from "./java.formatter.highlight";
+import { HighlighterTest as Highlighter } from "./java.formatter.highlight";
 import { JavaFormatterSettingPanel } from "../FormatterConstants";
 
 interface CodePreviewPanelProps {
@@ -60,9 +60,7 @@ export class CodePreviewPanel extends React.Component<CodePreviewPanelProps, Cod
 	render() {
 		return (
 			<div id="root">
-				<CodeHighlight>
-					{this.state.highlightedCode}
-				</CodeHighlight>
+				<div style={{ height: 50, overscrollBehavior: "auto" }}>{Highlighter(this.state.highlightedCode)}</div>
 				<div className="row">
 					<div className="col-lg-12">
 						<button onClick={() => this.format()} id="btnFormat" className="btn btn-primary mr-2 float-right" title="Format Code">Format Code</button>

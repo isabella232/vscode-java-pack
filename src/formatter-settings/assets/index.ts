@@ -1,7 +1,6 @@
 import "bootstrap/js/src/tab";
 import "bootstrap/js/src/collapse";
 import "bootstrap/js/src/dropdown";
-import * as $ from "jquery";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import "../../assets/vscode.scss";
@@ -37,10 +36,6 @@ function render() {
 	};
 
 	ReactDOM.render(React.createElement(JavaFormatterPanel, props), document.getElementById("formatterPanel"));
-
-	$("a.navigation").click(e => {
-		($($(e.target).attr("href") || "") as any).tab("show");
-	});
 
 }
 
