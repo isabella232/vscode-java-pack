@@ -38,22 +38,20 @@ export function generateSettingsLeaf(setting: JavaFormatterSetting) {
 				}
 			});
 			return (
-				<div className="input-group mb-3">
-					<div className="input-group-prepend">
-						<label className="input-group-text" htmlFor="invisible">{setting.name}:</label>
-					</div>
-					<select className="form-control" id={`${setting.panel}|${setting.id}`} onChange={handleChange}>
+				<div className="form-group">
+					<label htmlFor="inputPassword" className="col-sm-8 col-form-label">{setting.name}:</label>
+					<select className="form-control col-sm-2 mr-sm-2 float-right" id={`${setting.panel}|${setting.id}`} onChange={handleChange}>
 						{candidates}
 					</select>
 				</div>
 			);
 		case JavaFormatterSettingType.NUMBER:
 			return (
-				<div className="input-group mb-3">
-					<div className="input-group-prepend">
-						<span className="input-group-text" id="inputGroup-sizing-default">{setting.name}:</span>
+				<div className="form-group">
+					<label htmlFor="inputPassword" className="col-sm-8 col-form-label">{setting.name}:</label>
+					<div className="col-sm-2 mr-sm-2 float-right">
+						<input type="text" className="form-control" id={`${setting.panel}|${setting.id}`} defaultValue={setting.defaultValue} onChange={handleChange}></input>
 					</div>
-					<input type="text" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id={`${setting.panel}|${setting.id}`} defaultValue={setting.defaultValue} onChange={handleChange}></input>
 				</div>
 			);
 		default:

@@ -153,7 +153,7 @@ export class JavaFormatterSettingsEditorProvider implements CustomTextEditorProv
 					if (!settingValue) {
 						return;
 					}
-					this.changeFormatterSettings(document, settings, settingValue);
+					// this.changeFormatterSettings(document, settings, settingValue);
 					let targetPanel: string;
 					switch (group) {
 						case JavaFormatterSettingPanel.WHITESPACE:
